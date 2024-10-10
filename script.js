@@ -22,7 +22,7 @@ const engine = Engine.create();
 const world = engine.world;
 
 // Gravity setup (default is pointing downward)
-world.gravity.y = 3;
+world.gravity.y = 2;
 
 // Create boundary walls for the left, right, and bottom edges of the canvas
 const wallThickness = 20;  // Thickness of the boundary walls
@@ -43,12 +43,12 @@ World.add(world, [leftWall, rightWall, bottomWall]);
 // Function to create a Matter.js body for each image using its natural dimensions
 function createImageBody(img, x, y) {
     const ratio = img.naturalWidth / img.naturalHeight;
-    const width = 100 * ratio;  // Arbitrarily scale height to 50px and scale width accordingly
-    const height = 100;
+    const width = 80 * ratio;  // Arbitrarily scale height to 50px and scale width accordingly
+    const height = 80;
     
     // Create a body with lower inertia to allow rotation
     const body = Bodies.rectangle(x, y, width, height, {
-        restitution: 0.001,  // Bounce factor
+        restitution: 0.005,  // Bounce factor
         friction: 0.03,     // Friction for stacking
         frictionAir: 0.10, // Adds a bit of air friction to slow down rotation over time
         angle: Math.random() * Math.PI * 2,  // Start each image at a random angle
